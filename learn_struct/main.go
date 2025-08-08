@@ -31,8 +31,12 @@ func main() {
 	}
 
 	//1.1 add jimPointer and &
-	jimPointer := &jim //ex: 00x23ab
-	jimPointer.updateName("Jimmy")
+	// jimPointer := &jim //ex: 00x23ab
+	// jimPointer.updateName("Jimmy")
+	// jim.print()
+
+	// pointer shortcut เมื่อเขียน function ถูก ไม่จำเป็นต้องใส่ & ก็ได้ GO จะรู้เรื่องโดยอัตโนมัติถึง type ที่ส่งไป
+	jim.updateName("ChangeChange")
 	jim.print()
 }
 
