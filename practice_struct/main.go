@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 type student struct {
@@ -51,10 +50,12 @@ func main() {
 	fmt.Println(averageScore(allStudent))
 
 	fmt.Println("--- Max Score: ---")
-	fmt.Println(maxScore(allStudent))
+	maxS := maxScore(allStudent)
+	fmt.Printf("For max is %s with score %.2f\n", maxS.firstName, maxS.score)
 
 	fmt.Println("--- Min Score: ---")
-	fmt.Println(minScore(allStudent))
+	minS := minScore(allStudent)
+	fmt.Printf("For min is %s with score %.2f\n", minS.firstName, minS.score)
 }
 
 func (s *student) updateScore(newScore float64) {
@@ -75,22 +76,22 @@ func averageScore(studentList []*student) float64 {
 	return average
 }
 
-func maxScore(studentList []*student) float64 {
-	max := math.SmallestNonzeroFloat64
+func maxScore(studentList []*student) *student {
+	maxStu := studentList[0]
 	for _, s := range studentList {
-		if s.score > max {
-			max = s.score
+		if s.score > maxStu.score {
+			maxStu = s
 		}
 	}
-	return max
+	return maxStu
 }
 
-func minScore(studentList []*student) float64 {
-	min := math.MaxFloat64
+func minScore(studentList []*student) *student {
+	minStu := studentList[0]
 	for _, s := range studentList {
-		if s.score < min {
-			min = s.score
+		if s.score < minStu.score {
+			minStu = s
 		}
 	}
-	return min
+	return minStu
 }
